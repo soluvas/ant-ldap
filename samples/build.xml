@@ -15,16 +15,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses>.
 -->
-<project name="sampleproject">
-	<taskdef name="ldappropset" classname="com.soluvas.antldap.LdapPropSetTask"
-		classpath="../bin:../unbound"/>
-	<taskdef name="ldappropecho" classname="com.soluvas.antldap.LdapPropEchoTask"
+<project name="ant-ldap-sample1">
+	<taskdef name="ldapattrget" classname="com.soluvas.antldap.AttrGetTask"
 		classpath="../bin:../unbound"/>
 	<target name="do">
-		<ldappropset name="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
+		<ldapattrget propname="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />
 		<echo message="His email is ${his.email}"/>
-		<ldappropecho host="localhost" port="10389" binddn="uid=admin,ou=system" password="password"
-						dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" />
+		<ldapattrget host="localhost" port="10389" binddn="uid=admin,ou=system" password="password"
+				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" echo="true" />
 	</target>
 </project>
