@@ -5,5 +5,5 @@ Bundle-SymbolicName: com.soluvas.antldap
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
  unbound
-Export-Package: com.soluvas.antldap
+Export-Package: com.soluvas.antldap;uses:="org.apache.tools.ant"
 Bundle-Vendor: Soluvas
