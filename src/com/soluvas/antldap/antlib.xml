@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<antlib>
+   <typedef name="attrget" classname="com.soluvas.antldap.AttrGetTask"/>
+   <typedef name="search" classname="com.soluvas.antldap.SearchTask"/>
+</antlib>

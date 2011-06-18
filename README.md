@@ -2,6 +2,23 @@
 
 Copyright 2011 Soluvas (http://www.soluvas.com). All Rights Reserved.
 
+Usage
+=====
+
+	<project name="ant-ldap-sample1" xmlns:ldap="antlib:com.soluvas.antldap">
+		<taskdef uri="antlib:com.soluvas.antldap" resource="com/soluvas/antldap/antlib.xml"
+			classpath="lib/com.soluvas.antldap-1.0.0.jar"/>
+		<target name="do">
+			<ldap:attrget propname="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
+					dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />
+			<echo message="His email is ${his.email}"/>
+			<ldap:attrget port="10636" ssl="true" binddn="uid=admin,ou=system" password="password"
+					dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" echo="true" />
+			<ldap:search port="10636" ssl="true" binddn="uid=admin,ou=system" password="password" 
+					basedn="o=sevenSeas" filter="mail=cbuckley@royalnavy.mod.uk" attribute="description" echo="true" />
+		</target>
+	</project>
+
 Credits
 =======
 Includes UnboundID LDAP SDK, licensed under LGPLv2.1.
