@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Soluvas LDAP Ant Tasks
+Bundle-Name: Soluvas LDAP Ant Task Library
 Bundle-SymbolicName: com.soluvas.antldap
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
