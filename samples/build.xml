@@ -17,9 +17,9 @@
 -->
 <project name="sampleproject">
 	<taskdef name="ldappropset" classname="com.soluvas.antldap.LdapPropSetTask"
-		classpath="/home/ceefour/project/Soluvas/workspace/antldap/bin:${user.home}/Vendor/unboundid-ldapsdk-2.2.0-se/unboundid-ldapsdk-se.jar"/>
+		classpath="../bin:../unbound"/>
 	<taskdef name="ldappropecho" classname="com.soluvas.antldap.LdapPropEchoTask"
-		classpath="/home/ceefour/project/Soluvas/workspace/antldap/bin:${user.home}/Vendor/unboundid-ldapsdk-2.2.0-se/unboundid-ldapsdk-se.jar"/>
+		classpath="../bin:../unbound"/>
 	<target name="do">
 		<ldappropset name="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />
