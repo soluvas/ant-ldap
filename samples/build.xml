@@ -18,11 +18,15 @@
 <project name="ant-ldap-sample1">
 	<taskdef name="ldapattrget" classname="com.soluvas.antldap.AttrGetTask"
 		classpath="../bin:../unbound"/>
+	<taskdef name="ldapsearch" classname="com.soluvas.antldap.SearchTask"
+			classpath="../bin:../unbound"/>
 	<target name="do">
 		<ldapattrget propname="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />
 		<echo message="His email is ${his.email}"/>
-		<ldapattrget host="localhost" port="10636" ssl="true" binddn="uid=admin,ou=system" password="password"
+		<ldapattrget port="10636" ssl="true" binddn="uid=admin,ou=system" password="password"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" echo="true" />
+		<ldapsearch port="10636" ssl="true" binddn="uid=admin,ou=system" password="password" 
+				basedn="o=sevenSeas" filter="mail=cbuckley@royalnavy.mod.uk" attribute="description" echo="true" />
 	</target>
 </project>
