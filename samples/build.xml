@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses>.
 -->
-<project name="ant-ldap-sample1" xmlns:ldap="antlib:com.soluvas.antldap">
-	<taskdef uri="antlib:com.soluvas.antldap" resource="com/soluvas/antldap/antlib.xml"
-		classpath="../bin:../unbound"/>
+<project name="ant-ldap-sample1" xmlns:ldap="urn:com.soluvas.antldap">
+	<taskdef uri="urn:com.soluvas.antldap" resource="com/soluvas/antldap/antlib.xml"
+		classpath="../bin:${user.home}/Vendor/unboundid-ldapsdk-2.2.0-se/unboundid-ldapsdk-se.jar"/>
 	<target name="do">
 		<ldap:attrget propname="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />

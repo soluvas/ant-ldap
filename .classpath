@@ -3,7 +3,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="/usr/share/java/ant-1.8.1.jar"/>
-	<classpathentry kind="lib" path="unbound"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

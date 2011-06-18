@@ -3,7 +3,18 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Soluvas LDAP Ant Task Library
 Bundle-SymbolicName: com.soluvas.antldap
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .,
- unbound
-Export-Package: com.soluvas.antldap;uses:="org.apache.tools.ant"
+Export-Package: com.soluvas.antldap;uses:="com.unboundid.ldap.sdk,org.apache.tools.ant"
 Bundle-Vendor: Soluvas
+Import-Package: com.unboundid.ldap.sdk,
+ com.unboundid.util.ssl,
+ javax.naming,
+ javax.naming.directory,
+ javax.naming.ldap,
+ javax.net,
+ javax.net.ssl,
+ javax.security.auth,
+ javax.security.auth.callback,
+ javax.security.auth.login,
+ javax.security.auth.x500,
+ javax.security.sasl,
+ org.apache.tools.ant
