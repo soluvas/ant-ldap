@@ -22,7 +22,7 @@
 		<ldapattrget propname="his.email" host="localhost" port="10389" binddn="uid=admin,ou=system"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" password="password" />
 		<echo message="His email is ${his.email}"/>
-		<ldapattrget host="localhost" port="10389" binddn="uid=admin,ou=system" password="password"
+		<ldapattrget host="localhost" port="10636" ssl="true" binddn="uid=admin,ou=system" password="password"
 				dn="cn=Horatio Nelson,ou=people,o=sevenSeas" attribute="mail" echo="true" />
 	</target>
 </project>
