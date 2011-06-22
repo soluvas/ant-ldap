@@ -42,13 +42,18 @@ public class AttrGetTask extends LdapTask {
 			public void run() {
 				try {
 					SearchResultEntry entry = connection.getEntry(dn);
+					if (entry == null)
+						throw new BuildException("Cannot get LDAP entry with DN " + dn);
+					if (!entry.hasAttribute(attribute))
+						throw new BuildException("Cannot find attribute "+ attribute +" in DN " + dn);
 					// attribute value may be sensitive, such as userPassword
-					log("("+ dn +") " + attribute + ": " + entry.getAttributeValue(attribute), 4);
+					final String attrVal = entry.getAttributeValue(attribute);
+					log("("+ dn +") " + attribute + ": " + attrVal, 4);
 					if (echo)
-						System.out.println(attribute + ": " + entry.getAttributeValue(attribute));
+						System.out.println(attribute + ": " + attrVal);
 					if (propName != null && !propName.isEmpty()) {
-						log("Set property "+ propName +"="+ entry.getAttributeValue(attribute), 4);
-						getProject().setProperty(propName, entry.getAttributeValue(attribute));
+						log("Set property "+ propName +"="+ attrVal, 4);
+						getProject().setProperty(propName, attrVal);
 					}
 				} catch (LDAPException e) {
 					throw new BuildException("Cannot find LDAP entry " + dn + " on "+ getUri(), e);

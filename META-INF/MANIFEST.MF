@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Soluvas LDAP Ant Task Library
 Bundle-SymbolicName: com.soluvas.antldap
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.1.0.qualifier
 Export-Package: com.soluvas.antldap;uses:="com.unboundid.ldap.sdk,org.apache.tools.ant"
 Bundle-Vendor: Soluvas
 Import-Package: com.unboundid.ldap.sdk,
@@ -17,5 +17,7 @@ Import-Package: com.unboundid.ldap.sdk,
  javax.security.auth.login,
  javax.security.auth.x500,
  javax.security.sasl,
- org.apache.tools.ant
+ org.apache.tools.ant,
+ org.junit;version="4.8.0";resolution:=optional
 Bundle-ClassPath: .
+Require-Bundle: org.hamcrest.core;bundle-version="1.1.0";resolution:=optional

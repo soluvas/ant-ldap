@@ -44,16 +44,18 @@ public class SearchTask extends LdapTask {
 			public void run() {
 				try {
 					SearchResultEntry entry = connection.searchForEntry(getBaseDn(), SearchScope.SUB, getFilter());
-					if (entry != null)
-						log(filter + " matches ("+ entry.getDN() +")", 3);
-					else 
-						log(filter + " does not match", 2);
+					if (entry == null)
+						throw new BuildException("Cannot find LDAP entry matching " + filter + " with base "+ baseDn +" on "+ getUri());
+					log(filter + " matches ("+ entry.getDN() +")", 3);
+					if (!entry.hasAttribute(attribute))
+						throw new BuildException("Cannot find attribute "+ attribute +" in DN " + entry.getDN());
 					// attribute value may be sensitive, such as userPassword
+					final String attrVal = entry.getAttributeValue(attribute);
 					if (echo)
-						System.out.println(attribute + ": " + entry.getAttributeValue(attribute));
+						System.out.println(attribute + ": " + attrVal);
 					if (propName != null && !propName.isEmpty()) {
-						log("Set property "+ propName +"="+ entry.getAttributeValue(attribute), 4);
-						getProject().setProperty(propName, entry.getAttributeValue(attribute));
+						log("Set property "+ propName +"="+ attrVal, 4);
+						getProject().setProperty(propName, attrVal);
 					}
 				} catch (LDAPException e) {
 					throw new BuildException("Error searching " + filter + " with base "+ baseDn +" on "+ getUri(), e);
